@@ -52,7 +52,12 @@ class AgoReference(Reference):
         self.total_time = float(match_data.group(2))
 
     def __repr__(self):
-        return "<%f Days Ago>" % self.total_days
+        return "<%f %s Ago>" % (self.total_time, self.time_unit)
+
+    def is_operator(self, target_file, rhs):
+        start_date = self.payload(target_file)
+        end_date = datetime.datetime
+        return True
 
     def payload(self, target_file):
         if self.__UNITS__[self.time_unit.upper()] is None:

@@ -27,5 +27,8 @@ class Reference(parse.Operand):
     def __init__(self, match_data):
         pass
 
+    def is_operator(self, target_file, rhs):
+        raise NotImplementedError(".is_operator is not implemented on reference '%s'" % self.__class__.__name__)
+
     def evaluate(self, target_file, rhs=None):
         return True

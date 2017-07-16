@@ -21,10 +21,9 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
-from .operator import Operator
-
-class IsOperator(Operator):
-    __TOKEN__ = "IS"
-
-    def evaluate(self, target_file):
-        return self.lhs.is_operator(target_file, self.rhs)
+from .syntaxerror import SyntaxError
+from .compilererror import CompilerError
+from .badparentheseserror import BadParenthesesError
+from .unknownoperatorerror import UnknownOperatorError
+from .unknownreferenceerror import UnknownReferenceError
+from .unknownlogicaloperatorerror import UnknownLogicalOperatorError

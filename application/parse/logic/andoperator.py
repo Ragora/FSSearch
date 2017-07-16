@@ -24,6 +24,7 @@ from .logicaloperator import LogicalOperator
 
 class AndOperator(LogicalOperator):
     __TOKEN__ = "AND"
+    __SHORT_CIRCUIT__ = False
 
     def evaluate(self, target_file, rhs=None):
         if rhs is not None:

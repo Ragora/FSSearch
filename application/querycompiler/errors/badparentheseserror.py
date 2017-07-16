@@ -21,10 +21,12 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
-from .operator import Operator
+from .compilererror import CompilerError
 
-class IsOperator(Operator):
-    __TOKEN__ = "IS"
+class BadParenthesesError(CompilerError):
+    """
+        An error representing an unknown reference. This should not be thrown under normal circumstances.
+    """
 
-    def evaluate(self, target_file):
-        return self.lhs.is_operator(target_file, self.rhs)
+    def __init__(self):
+        super(BadParenthesesError, self).__init__("Bad parentheses.")

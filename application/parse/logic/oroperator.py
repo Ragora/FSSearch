@@ -25,6 +25,7 @@ from .logicaloperator import LogicalOperator
 
 class OrOperator(LogicalOperator):
     __TOKEN__ = "OR"
+    __SHORT_CIRCUIT__ = True
 
     def evaluate(self, target_file, rhs=None):
         if rhs is not None:

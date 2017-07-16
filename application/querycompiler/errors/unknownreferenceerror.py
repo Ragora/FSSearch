@@ -21,10 +21,16 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
-from .operator import Operator
+from .compilererror import CompilerError
 
-class IsOperator(Operator):
-    __TOKEN__ = "IS"
+class UnknownReferenceError(CompilerError):
+    """
+        An error representing an unknown reference. This should not be thrown under normal circumstances.
+    """
 
-    def evaluate(self, target_file):
-        return self.lhs.is_operator(target_file, self.rhs)
+    def __init__(self, token_index, previous_token, current_token, query, reference):
+        message = "Unknown reference '%s' in query (at token index %u, character %u)\n\n" % (reference, token_index, current_token.match_data.start())
+        message += "In query:\n %s\n" % query
+        message += "".join(["-"] * current_token.match_data.start()) + "^"
+
+        super(UnknownReferenceError, self).__init__(message)

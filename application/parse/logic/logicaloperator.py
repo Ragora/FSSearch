@@ -22,5 +22,11 @@
 """
 
 class LogicalOperator(object):
+    __SHORT_CIRCUIT__ = None
+    """
+        An internal value used to determine when this logical operator should short circuit. If None, there is
+        no short circuit behavior.
+    """
+
     def evaluate(self, target_file, rhs=None):
         raise NotImplementedError(".evaluate not implemented.")

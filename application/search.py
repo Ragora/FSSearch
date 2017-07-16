@@ -52,7 +52,7 @@ class Application(object):
         compiler = QueryCompiler()
         query = compiler.compile(query)
 
-        results = query.execute(path=filepath)
+        results = query.iexecute(path=filepath)
         # Execute search
         #self.results_start = datetime.datetime.now()
         #results = self.execute(parsed_ast)

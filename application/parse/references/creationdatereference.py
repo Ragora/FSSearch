@@ -26,5 +26,9 @@ from .reference import Reference
 class CreationDateReference(Reference):
     __TOKEN__ = "CREATION DATE"
 
+    def is_operator(self, target_file, rhs):
+        result = rhs.is_operator(target_file, self)
+        return result
+
     def payload(self, target_file):
         return target_file.creation_date
